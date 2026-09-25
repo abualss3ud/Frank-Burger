@@ -194,12 +194,12 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-1.5 text-[11px] text-zinc-400">
             <span>{language === 'ar' ? 'تطوير بواسطة' : 'Developed by'}</span>
             <a
-              href="https://bytera-tech.com/"
+              href="https://abualsaud.dev/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-zinc-700 hover:text-[#E51E2A] transition-colors"
             >
-              Bytera
+              Abu Al-Saud
             </a>
           </div>
         </div>
