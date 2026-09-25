@@ -1,0 +1,171 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Customer and POS restaurant order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderType": { "type": "string" },
+        "status": { "type": "string" },
+        "total": { "type": "number" },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "tax": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "orderDate": { "type": "string" },
+        "branchId": { "type": "string" }
+      },
+      "required": ["id", "status", "total", "paymentMethod", "orderDate"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email"]
+    },
+    "CashierShift": {
+      "title": "CashierShift",
+      "description": "Cashier shift record and handover details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "cashierId": { "type": "string" },
+        "cashierName": { "type": "string" },
+        "status": { "type": "string" },
+        "startTime": { "type": "string" },
+        "startingCash": { "type": "number" },
+        "totalSales": { "type": "number" },
+        "ordersCount": { "type": "number" },
+        "branchId": { "type": "string" }
+      },
+      "required": ["id", "cashierName", "status", "startTime", "startingCash"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Security and administrative audit trail",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "username": { "type": "string" },
+        "role": { "type": "string" },
+        "action": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["id", "username", "role", "action", "timestamp", "status"]
+    },
+    "PasswordReset": {
+      "title": "PasswordReset",
+      "description": "Secure 15-minute token record for password recovery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "email": { "type": "string" },
+        "tokenHash": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "expiresAt": { "type": "string" },
+        "isUsed": { "type": "boolean" }
+      },
+      "required": ["id", "username", "email", "tokenHash", "createdAt", "expiresAt", "isUsed"]
+    },
+    "CustomerReview": {
+      "title": "CustomerReview",
+      "description": "Client testimonial and review moderation document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerAvatar": { "type": "string" },
+        "rating": { "type": "number" },
+        "commentAr": { "type": "string" },
+        "commentEn": { "type": "string" },
+        "date": { "type": "string" },
+        "isApproved": { "type": "boolean" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["id", "customerName", "rating", "commentAr", "commentEn", "date", "isApproved"]
+    },
+    "RestaurantSettings": {
+      "title": "RestaurantSettings",
+      "description": "Global restaurant settings, SEO metadata, and contact info",
+      "type": "object",
+      "properties": {
+        "restaurantNameAr": { "type": "string" },
+        "restaurantNameEn": { "type": "string" },
+        "sloganAr": { "type": "string" },
+        "sloganEn": { "type": "string" },
+        "isOpen": { "type": "boolean" },
+        "allowScheduledWhenClosed": { "type": "boolean" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "addressAr": { "type": "string" },
+        "addressEn": { "type": "string" },
+        "openingHoursAr": { "type": "string" },
+        "openingHoursEn": { "type": "string" },
+        "currencyAr": { "type": "string" },
+        "currencyEn": { "type": "string" },
+        "taxPercentage": { "type": "number" },
+        "freeDeliveryThreshold": { "type": "number" },
+        "socialFacebook": { "type": "string" },
+        "socialInstagram: " : { "type": "string" },
+        "socialTiktok": { "type": "string" },
+        "rushHourMode": { "type": "boolean" },
+        "estimatedPreparationTimeMinutes": { "type": "number" },
+        "facebookPixelId": { "type": "string" },
+        "tiktokPixelId": { "type": "string" },
+        "googleAnalyticsId": { "type": "string" },
+        "seoTitleAr": { "type": "string" },
+        "seoTitleEn": { "type": "string" },
+        "seoDescriptionAr": { "type": "string" },
+        "seoDescriptionEn": { "type": "string" },
+        "seoKeywordsAr": { "type": "string" },
+        "seoKeywordsEn": { "type": "string" },
+        "faviconUrl": { "type": "string" }
+      },
+      "required": ["restaurantNameAr", "restaurantNameEn", "isOpen"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "All customer and cashier orders"
+    },
+    "/shifts/{shiftId}": {
+      "schema": "CashierShift",
+      "description": "Cashier shifts and handover records"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles"
+    },
+    "/audit_logs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Immutable security and audit log entries"
+    },
+    "/password_resets/{resetId}": {
+      "schema": "PasswordReset",
+      "description": "Hashed password reset tokens"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "CustomerReview",
+      "description": "Client testimonials and reviews"
+    },
+    "/settings/{settingsId}": {
+      "schema": "RestaurantSettings",
+      "description": "Global settings document"
+    }
+  }
+}

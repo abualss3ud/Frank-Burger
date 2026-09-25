@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-arabic: 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Oswald', 'Cairo', sans-serif;
+    --font-body: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+    --frank-red: #E51E2A;
+    --frank-red-hover: #c81520;
+    --frank-dark: #fcfcfc;
+    --frank-surface: #ffffff;
+    --frank-card: #f9f9f9;
+    --frank-border: #e4e4e7;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #fcfcfc;
+    color: #18181b;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+    color: #09090b;
+  }
+
+  /* Clean subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fcfcfc;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e4e4e7;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d8;
+  }
+}
+
+/* Thermal receipt mono typography */
+.font-mono-receipt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
